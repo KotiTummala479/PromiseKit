@@ -59,9 +59,9 @@ class PromiseTests: XCTestCase {
     }
 
     func testCustomStringConvertible() {
-        XCTAssert(String(Promise<Void>.pending().promise).contains("Pending"))
-        XCTAssert(String(Promise(value: ())).contains("Fulfilled"))
-        XCTAssert(String(Promise<Void>(error: Error.dummy)).contains("Rejected"))
+        XCTAssert("\(Promise<Void>.pending().promise)".contains("Pending"))
+        XCTAssert("\(Promise(value: ()))".contains("Fulfilled"))
+        XCTAssert("\(Promise<Void>(error: Error.dummy))".contains("Rejected"))
     }
 
     func testCannotFulfillWithError() {

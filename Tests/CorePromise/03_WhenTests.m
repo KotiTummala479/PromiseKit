@@ -66,8 +66,8 @@
     id p1 = dispatch_promise(^{ return PMKManifold(@1, @2); });
     id p2 = dispatch_promise(^{});
     PMKWhen(@[p1, p2]).then(^(NSArray *results){
-        XCTAssertEqual(results[0], @1);
-        XCTAssertEqual(results[1], [NSNull null]);
+        XCTAssertEqualObjects(results[0], @1);
+        XCTAssertEqualObjects(results[1], [NSNull null]);
         [ex fulfill];
     });
     [self waitForExpectationsWithTimeout:1 handler:nil];

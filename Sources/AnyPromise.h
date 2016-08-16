@@ -37,6 +37,8 @@ typedef NS_ENUM(NSInteger, PMKCatchPolicy) {
 
 @interface AnyPromise (obj)
 
+@property (nonatomic, readonly) __nullable id value;
+
 /**
  The provided block is executed when its receiver is resolved.
 

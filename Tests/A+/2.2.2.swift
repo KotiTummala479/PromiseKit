@@ -27,7 +27,7 @@ class Test222: XCTestCase {
                 }
                 specify("never fulfilled") { d, expectation in
                     d.promise.then{ XCTFail() }
-                    after(ticks: 5_000, execute: expectation.fulfill)
+                    after(ticks: 1000, execute: expectation.fulfill)
                 }
             }
 
@@ -37,7 +37,7 @@ class Test222: XCTestCase {
                     Promise(value: ()).then {
                         ex.0.fulfill()
                     }
-                    after(ticks: 10_000) {
+                    after(ticks: 1000) {
                         ex.1.fulfill()
                     }
                 }
