@@ -148,7 +148,7 @@ import Foundation
 
      - Returns: A resolved promise.
      */
-    @objc class func promiseWithValue(_ value: Any?) -> AnyPromise {
+    @objc public class func promiseWithValue(_ value: Any?) -> AnyPromise {
         let state: State<Any?>
         switch value {
         case let promise as AnyPromise:
@@ -185,7 +185,7 @@ import Foundation
      - SeeAlso: http://promisekit.org/sealing-your-own-promises/
      - SeeAlso: http://promisekit.org/wrapping-delegation/
      */
-    @objc class func promiseWithResolverBlock(_ body: (@escaping (Any?) -> Void) -> Void) -> AnyPromise {
+    @objc public class func promiseWithResolverBlock(_ body: (@escaping (Any?) -> Void) -> Void) -> AnyPromise {
         return AnyPromise(sealant: { resolve in
             body { obj in
                 makeHandler({ _ in obj }, resolve)(obj)
