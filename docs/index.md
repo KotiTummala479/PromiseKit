@@ -198,6 +198,47 @@ race(turtle(), rabbit()).then { winner in
 }
 ```
 
+
+## Wrapping Asynchronous Systems
+
+We provide extensions for almost everything Apple provides, so you convert your
+whole app to promises with ease:
+
+```
+MKMapDirections(/*…*/).promise().then { directions -> Void in
+
+    // To use the MapKit extension, add to your `Podfile`:
+    //     pod "PromiseKit/MapKit"
+
+    // Or to your `Cartfile`:
+    //     github "PromiseKit/MapKit"  # Carthage
+}
+```
+
+However you inevitably use some other framework that doesn't support promises.
+For these situations we provide `wrap`:
+
+```swift
+Promise.wrap(FooKit.login).then { result in
+    //…
+}.catch { error in
+    //…
+}
+```
+
+For callbacks that take initial parameters, open the closure:
+
+```swift
+Promise.wrap{ FooKit.post(message: text, completionHandler: $0) }.then { result in
+    //…
+}.catch { error in
+    //…
+}
+```
+
+`wrap` usually works, if it doesn’t you’ll need to use the more flexible `Promise<T>` inializer, see [Making Promises](/docs/making-promises/).
+
+
 ## Further Reading
 
 * [https://littlebitesofcocoa.com/13-promisekit]()

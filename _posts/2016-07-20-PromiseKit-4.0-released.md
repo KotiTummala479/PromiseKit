@@ -48,7 +48,20 @@ However ocassionally it is legitimate to not terminate a chain, in such cases yo
 _ = foo.then{ /*…*/ }
 ```
 
+
+### `AnyPromise -finally`
+
+Renamed always so as to be consistent with `Promise<T>`, and because `finally` was not a good metaphor for promises relative to the `try`, `catch`, `finally` objc exception pattern we were originally partially emulating with PMK1.
+
+
 ## New Features
 
 * `PMKSetDefaultDispatchHandler`
 * `when(generator:concurrently)`
+
+
+# foo
+
+Removed deprecations
+Moved OMG away
+Bolts, Alamofire and AFNetworking
