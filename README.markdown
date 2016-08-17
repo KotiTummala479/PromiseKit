@@ -28,7 +28,15 @@ platform with a `swiftc`, it has *excellent* Objective-C bridging and
 
 ```ruby
 # CocoaPods
-pod "PromiseKit", "~> 4.0"
+pod "PromiseKit", :git => 'https://github.com/mxcl/PromiseKit.git', :branch => 'swift-3.0'
+
+post_install do |installer|
+  installer.pods_project.targets.each do |target|
+    target.build_configurations.each do |config|
+      config.build_settings['SWIFT_VERSION'] = '3.0'
+    end
+  end
+end
 
 # Carthage
 github "mxcl/PromiseKit" ~> 4.0
