@@ -204,7 +204,7 @@ race(turtle(), rabbit()).then { winner in
 We provide extensions for almost everything Apple provides, so you convert your
 whole app to promises with ease:
 
-```
+```swift
 MKMapDirections(/*…*/).promise().then { directions -> Void in
 
     // To use the MapKit extension, add to your `Podfile`:
