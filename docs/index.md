@@ -206,10 +206,10 @@ whole app to promises with ease:
 
 ```swift
 MKMapDirections(/*…*/).promise().then { directions -> Void in
-
+    //
     // To use the MapKit extension, add to your `Podfile`:
     //     pod "PromiseKit/MapKit"
-
+    //
     // Or to your `Cartfile`:
     //     github "PromiseKit/MapKit"  # Carthage
 }
@@ -220,7 +220,11 @@ For these situations we provide `wrap`:
 
 ```swift
 Promise.wrap(FooKit.login).then { result in
-    //…
+    //
+    // login probably looks like:
+    //
+    //     func login(completionHandler: ([String: String]?, Error?) -> Void)
+    //
 }.catch { error in
     //…
 }
