@@ -117,16 +117,21 @@ typedef NS_ENUM(NSInteger, PMKCatchPolicy) {
 
  The provided block always runs on the main queue.
 
- @see finallyOn
+ @see alwaysOn
 */
 - (AnyPromise * __nonnull(^ __nonnull)(dispatch_block_t __nonnull))always NS_REFINED_FOR_SWIFT;
 
 /**
  The provided block is executed on the dispatch queue of your choice when the receiver is resolved.
 
- @see finally
+ @see always
  */
 - (AnyPromise * __nonnull(^ __nonnull)(dispatch_queue_t __nonnull, dispatch_block_t __nonnull))alwaysOn NS_REFINED_FOR_SWIFT;
+
+/// @see always
+- (AnyPromise * __nonnull(^ __nonnull)(dispatch_block_t __nonnull))finally __attribute__((deprecated("Use always")));
+/// @see alwaysOn
+- (AnyPromise * __nonnull(^ __nonnull)(dispatch_block_t __nonnull, dispatch_block_t __nonnull))finallyOn __attribute__((deprecated("Use always")));
 
 /**
  Create a new promise with an associated resolver.
